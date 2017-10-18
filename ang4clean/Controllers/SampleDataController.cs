@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
-namespace ang4clean.Controllers
+namespace VSAng.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
+        ILogger _log; 
+        public SampleDataController(ILogger<SampleDataController> log)
+        {
+            _log = log;
+        }
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -17,13 +23,20 @@ namespace ang4clean.Controllers
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
+            _log.LogCritical("building weather forecast");
+
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            });
+
+            return Enumerable.Range(1, 5).Select(index => {
+                int temperatureC = rng.Next(-20, 55);
+                return (new WeatherForecast
+                    {
+                        DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
+                        TemperatureC = temperatureC,
+                        Summary = Summaries[(Int16)((temperatureC + 20) / 8)]
+                    });
+                }
+            );
         }
 
         public class WeatherForecast

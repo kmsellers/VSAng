@@ -1,5 +1,5 @@
 {
-  "name": "ang4clean",
+  "name": "vsang",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@angular/animations": "4.2.5",
+    "@angular/cli": "^1.4.3",
     "@angular/common": "4.2.5",
     "@angular/compiler": "4.2.5",
     "@angular/compiler-cli": "4.2.5",

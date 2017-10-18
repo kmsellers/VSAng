@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ang4clean.Controllers
+namespace VSAng.Controllers
 {
     public class HomeController : Controller
     {

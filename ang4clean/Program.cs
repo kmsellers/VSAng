@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace ang4clean
+namespace VSAng
 {
     public class Program
     {
@@ -19,6 +19,13 @@ namespace ang4clean
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                 .ConfigureAppConfiguration((builderContext, config) =>
+                 {
+                     IHostingEnvironment env = builderContext.HostingEnvironment;
+
+                     config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+                 })
                 .UseStartup<Startup>()
                 .Build();
     }
