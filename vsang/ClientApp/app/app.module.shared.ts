@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { ContactsComponent } from './components/contacts/contact-list.component';
 import { ContactFormComponent } from './components/contacts/contact-form.component';
+import { ContactCardComponent } from './components/contacts/contact-card.component';
 import { CounterComponent } from './components/counter/counter.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { CounterComponent } from './components/counter/counter.component';
         CounterComponent,
         ContactsComponent,
         ContactFormComponent,
+        ContactCardComponent,
         FetchDataComponent,
         HomeComponent
     ],

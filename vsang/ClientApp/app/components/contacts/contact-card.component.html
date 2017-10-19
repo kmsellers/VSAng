@@ -1,0 +1,18 @@
+<h2>{{ contact.first_name }}&nbsp; {{ contact.last_name }}</h2>
+<div *ngIf="contact.mobile_phone"><span>mobile:&nbsp;</span>{{ contact.mobile_phone }}</div>
+<div *ngIf="contact.work_phone"><span>work:&nbsp;</span>{{ contact.work_phone }}</div>
+<br />
+<div *ngIf="contact.address_line_1">{{ contact.address_line_1 }}</div>
+<div *ngIf="contact.city">{{ contact.city }}</div>
+<div>
+    <span *ngIf="contact.state">{{ contact.state }}</span>
+    <span *ngIf="contact.postal_code">&nbsp;{{ contact.postal_code }}</span>
+    <span *ngIf="contact.country">&nbsp;{{ contact.country }}</span>
+</div>
+
+<div class="tools">
+
+    <a class="delete" (click)="onDelete()">
+        remove
+    </a>
+</div>

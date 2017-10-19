@@ -20,11 +20,11 @@ namespace VSAng.Data.Repository.Model
         [JsonProperty(PropertyName = "email")]
         public string email { get; set; }
 
-        //[JsonProperty(PropertyName = "mobile_phone")]
-        //public string mobile_phone { get; set; }
+        [JsonProperty(PropertyName = "mobile_phone")]
+        public string mobile_phone { get; set; }
 
-        //[JsonProperty(PropertyName = "work_phone")]
-        //public string work_phone { get; set; }
+        [JsonProperty(PropertyName = "work_phone")]
+        public string work_phone { get; set; }
 
         [JsonProperty(PropertyName = "address_line_1")]
         public string address_line_1 { get; set; }

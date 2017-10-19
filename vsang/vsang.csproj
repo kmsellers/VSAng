@@ -5,6 +5,8 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
+    <AssemblyName>VSAng</AssemblyName>
+    <RootNamespace>VSAng</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,7 +20,17 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="ClientApp\app\components\photos\**" />
+    <Compile Remove="ClientApp\app\contact-card\**" />
     <Content Remove="ClientApp\**" />
+    <EmbeddedResource Remove="ClientApp\app\components\photos\**" />
+    <EmbeddedResource Remove="ClientApp\app\contact-card\**" />
+    <None Remove="ClientApp\app\components\photos\**" />
+    <None Remove="ClientApp\app\contact-card\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

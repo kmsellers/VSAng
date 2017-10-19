@@ -9,7 +9,12 @@
         New
     </button> 
 </div>
-
+<section>
+    <app-contact-card [ngClass]="contact"
+                      *ngFor="let contact of contacts"
+                      [contact]="contact"
+                      (delete)="onContactDelete($event)"></app-contact-card>
+</section>
 <table class='table' *ngIf="contacts" >
     <thead>
         <tr>
@@ -42,5 +47,4 @@
        </tr>
     </tbody>
 </table>
-
 <p>contacts json: {{ contacts | json}}</p>

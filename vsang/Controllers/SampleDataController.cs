@@ -33,7 +33,7 @@ namespace VSAng.Controllers
                     {
                         DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
                         TemperatureC = temperatureC,
-                        Summary = Summaries[(Int16)((temperatureC + 20) / 8)]
+                        Summary = Summaries[(Int16)((temperatureC + 20) / 10)]
                     });
                 }
             );
