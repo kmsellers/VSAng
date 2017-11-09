@@ -1,8 +1,16 @@
 ﻿import { Injectable, Inject } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { of } from "rxjs/observable/of";
 import { WeatherForecast } from './weatherforecast';
 import 'rxjs/add/operator/map';
+import { HttpClient } from "@angular/common/http";
+
+
+interface WFResponse 
+{
+    results: WeatherForecast[]
+}
 
 @Injectable()
 export class FetchDataService {
@@ -14,8 +22,8 @@ export class FetchDataService {
 
 
     getWeatherForecast(): Observable<WeatherForecast[]> {
-        return this.http.get(this.forecastUrl).map(response => response.json() as WeatherForecast[])
-            .catch(error => this.handleError(error));
+        return (this.http.get(this.forecastUrl)).map(data => data.json() as WeatherForecast[]);
+        //return (this.http.get<WeatherForecast[]>(this.forecastUrl));
 
     }
 
@@ -25,3 +33,5 @@ export class FetchDataService {
         return Promise.reject(error.message || error);
     }
 }
+
+

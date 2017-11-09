@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ContactService } from './contact.service';
-import { Contact } from './contact';
+import { ContactService } from '../../services/contact.service';
+import { Contact } from '../../models/contact';
 
 @Component({
     selector: 'app-contact-card',
@@ -11,11 +11,16 @@ import { Contact } from './contact';
 export class ContactCardComponent {
     @Input() contact : Contact;
     @Output() delete = new EventEmitter();
+    @Output() view = new EventEmitter();
     constructor(private contactService: ContactService) { }
 
-
-        onDelete() {
-            this.delete.emit(this.contact);
+    onDelete() {
+        this.delete.emit(this.contact);
     }
+    onViewDetails() {
+        this.view.emit(this.contact);
+    }
+
 }
+
 

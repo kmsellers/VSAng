@@ -8,12 +8,16 @@
     <button (click)="newContact()">
         New
     </button> 
+
 </div>
 <section>
     <app-contact-card [ngClass]="contact"
                       *ngFor="let contact of contacts"
                       [contact]="contact"
-                      (delete)="onContactDelete($event)"></app-contact-card>
+                      (delete)="onContactDelete($event)"
+                      (view)="onViewDetails($event)">
+
+    </app-contact-card>
 </section>
 <table class='table' *ngIf="contacts" >
     <thead>
@@ -44,7 +48,13 @@
                        (click)="delete(contact); $event.stopPropagation()">
                     x
                 </button></td>
-       </tr>
+            <td>
+                <button 
+                        (click)="onViewDetails(contact); $event.stopPropagation()">
+                    view
+                </button>
+            </td>
+      </tr>
     </tbody>
 </table>
 <p>contacts json: {{ contacts | json}}</p>

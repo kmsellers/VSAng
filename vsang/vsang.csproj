@@ -30,7 +30,36 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove=".angular-cli.json" />
     <Content Remove="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\app\app.module.shared.bu.ts" />
+    <None Remove="ClientApp\app\contacts\actions\contact.ts" />
+    <None Remove="ClientApp\app\contacts\contact-overview.ts" />
+    <None Remove="ClientApp\app\components\tabs\tab-component.interface.ts" />
+    <None Remove="ClientApp\app\components\tabs\tab-item.ts" />
+    <None Remove="ClientApp\app\core\containers\not-found-page.ts" />
+    <None Remove="ClientApp\app\sage.50.module.shared.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\contacts\actions\contact.ts" />
+    <TypeScriptCompile Include="ClientApp\app\contacts\components\contact\contact-addin.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\core\containers\not-found-page.ts" />
+    <TypeScriptCompile Include="ClientApp\app\contacts\models\contact-overview.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\navbar\navbar-item.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\tabs\dynamic-tabs.directive.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\tabs\tab-component.interface.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\tabs\tab-item.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\app\contacts\effects\" />
+    <Folder Include="ClientApp\app\contacts\containers\" />
+    <Folder Include="ClientApp\app\contacts\guards\" />
+    <Folder Include="ClientApp\app\contacts\reducers\" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

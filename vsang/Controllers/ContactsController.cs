@@ -31,8 +31,18 @@ namespace VSAng.Controllers
         [HttpGet("{id}", Name = "Get")]
         public async Task<Contact> Get(Guid id)
         {
-            return await _repository.GetDocument(id);
+            var contact = await _repository.GetDocument(id);
+            return contact; // await _repository.GetDocument(id);
         }
+
+        //// GET: api/Contacts/5
+        //[HttpGet("{id}/overview", Name = "Get")]
+        //public async Task<Contact> GetOverview(Guid id)
+        //{
+        //    var contact = await _repository.GetDocument(id);
+        //    return contact; // await _repository.GetDocument(id);
+        //}
+
 
         // POST: api/Contacts
         [HttpPost("[action]")]

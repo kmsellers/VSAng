@@ -1,11 +1,10 @@
 import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Contact } from './contact';
-import { ContactService } from './contact.service';
+import { Contact } from '../../models/contact';
+import { ContactService } from '../../services/contact.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/fromPromise';
 import { Subscription } from "rxjs/Subscription";
 
 @Component({
@@ -17,7 +16,6 @@ import { Subscription } from "rxjs/Subscription";
 export class ContactsComponent implements OnInit, OnDestroy {
     contactsSub: Subscription;
     contacts: Contact[];
-    collcontacts: any; 
     selectedContact: any;
 
     constructor( @Inject('BASE_URL') private baseUrl: string,
@@ -25,8 +23,8 @@ export class ContactsComponent implements OnInit, OnDestroy {
         private router: Router) { }
 
     getContacts(): Observable<Contact[]> {
-        return Observable.fromPromise(this.contactService
-            .getContacts());
+        return this.contactService
+            .getContacts();
     }
 
     newContact(): void {
@@ -34,6 +32,11 @@ export class ContactsComponent implements OnInit, OnDestroy {
     }
     onContactDelete(contact : Contact) {
         this.delete(contact);
+    }
+    onViewDetails(): void {
+        console.log("is selectedContact defined? " + this.selectedContact !== undefined && this.selectedContact !== null);
+        console.log("is selectedContact id " + this.selectedContact.id );
+        this.router.navigate(['/contact', this.selectedContact.id]);
     }
 
     delete(contact: Contact): void {
@@ -57,9 +60,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
         this.selectedContact = contact;
     }
 
-    gotoDetail(): void {
-        this.router.navigate(['/detail', this.selectedContact.id]);
-    }
+
 
     ngOnDestroy(): void {
         this.contactsSub.unsubscribe();

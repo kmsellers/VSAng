@@ -3,8 +3,8 @@
     first_name : string;        // FirstName;
     last_name : string;         // LastName;
     email : string;             // Email;
-    //mobile_phone : string;      // MobilePhone;
-    //work_phone : string;        // WorkPhone;
+    mobile_phone : string;      // MobilePhone;
+    work_phone : string;        // WorkPhone;
     address_line_1 : string;    // AddressLine1;
     //address_line_2 : string;    // AddressLine2;
     //address_line_3 : string;    // AddressLine3;

@@ -2,9 +2,9 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ContactService } from './contact.service';
-import { Contact } from './contact'; 
-import { States } from '../common/data-model';
+import { ContactService } from '../../services/contact.service';
+import { Contact } from '../../models/contact'; 
+import { States } from '../../models/common';
 
 @Component({
     selector: 'app-contacts-form',
