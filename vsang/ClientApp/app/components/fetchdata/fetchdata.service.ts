@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { of } from "rxjs/observable/of";
 import { WeatherForecast } from './weatherforecast';
 import 'rxjs/add/operator/map';
-import { HttpClient } from "@angular/common/http";
 
 
 interface WFResponse 

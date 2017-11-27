@@ -6,12 +6,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 import { Subscription } from "rxjs/Subscription";
+//import { UserService } from "../../../core/user.service";
 
 @Component({
   selector: 'app-contacts',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css'],
-  providers: [ContactService]
+
 })
 export class ContactsComponent implements OnInit, OnDestroy {
     contactsSub: Subscription;
@@ -19,7 +20,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
     selectedContact: any;
 
     constructor( @Inject('BASE_URL') private baseUrl: string,
-        private contactService: ContactService,
+        private contactService: ContactService, // private userService: UserService,
         private router: Router) { }
 
     getContacts(): Observable<Contact[]> {
@@ -31,12 +32,14 @@ export class ContactsComponent implements OnInit, OnDestroy {
         this.router.navigate(['/contacts/add']);
     }
     onContactDelete(contact : Contact) {
-        this.delete(contact);
+        console.log("in delete");
+    //    this.delete(contact);
     }
-    onViewDetails(): void {
+    onViewDetails(contact: Contact): void {
+        this.selectedContact = contact; 
         console.log("is selectedContact defined? " + this.selectedContact !== undefined && this.selectedContact !== null);
         console.log("is selectedContact id " + this.selectedContact.id );
-        this.router.navigate(['/contact', this.selectedContact.id]);
+        this.router.navigate(['/contacts', this.selectedContact.id]);
     }
 
     delete(contact: Contact): void {

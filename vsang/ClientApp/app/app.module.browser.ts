@@ -1,14 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppModuleShared } from './app.module.shared';
 import { AppComponent } from './components/app/app.component';
+import { ContactsModule } from './contacts/contacts.module';
+import { CoreModule } from './core/core.module';
+
+/* Routing Module */
+import { AppRoutingModule } from './app-routing.module';
+import { Tab } from "./components/tabs/tab.component";
 
 @NgModule({
-    bootstrap: [ AppComponent ],
     imports: [
         BrowserModule,
-        AppModuleShared
+        ContactsModule,
+        CoreModule.forRoot({userName: 'Module Browser'}),
+        AppRoutingModule
     ],
+    declarations: [
+        AppComponent,
+    ],
+    bootstrap: [AppComponent],
+    entryComponents: [Tab],
     providers: [
         { provide: 'BASE_URL', useFactory: getBaseUrl }
     ]

@@ -35,24 +35,31 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\app-routing.module.ts" />
     <None Remove="ClientApp\app\app.module.shared.bu.ts" />
     <None Remove="ClientApp\app\contacts\actions\contact.ts" />
     <None Remove="ClientApp\app\contacts\contact-overview.ts" />
     <None Remove="ClientApp\app\components\tabs\tab-component.interface.ts" />
     <None Remove="ClientApp\app\components\tabs\tab-item.ts" />
     <None Remove="ClientApp\app\core\containers\not-found-page.ts" />
+    <None Remove="ClientApp\app\core\core.module.ts" />
+    <None Remove="ClientApp\app\core\title.component.ts" />
     <None Remove="ClientApp\app\sage.50.module.shared.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\app-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\contacts\actions\contact.ts" />
-    <TypeScriptCompile Include="ClientApp\app\contacts\components\contact\contact-addin.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\contacts\components\contact-app\contact-addin.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\core\containers\not-found-page.ts" />
     <TypeScriptCompile Include="ClientApp\app\contacts\models\contact-overview.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\navbar\navbar-item.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\tabs\dynamic-tabs.directive.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\tabs\tab-component.interface.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\tabs\tab-item.ts" />
+    <TypeScriptCompile Include="ClientApp\app\core\core.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\core\title.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\core\user.service.ts" />
   </ItemGroup>
 
   <ItemGroup>

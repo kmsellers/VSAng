@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, Input,  ViewChild, ComponentFactoryResolver } from '@angular/core';
 import { ITabComponent } from "./tab-component.interface";
 import { TabHostDirective } from "./tab-host.directive";
 
