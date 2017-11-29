@@ -17,6 +17,7 @@ export class UserServiceConfig {
 export class UserService {
     id = nextId++;
     private _userName = 'Sherlock Holmes';
+    private _ovCounter : number = 10; 
 
     constructor( @Optional() config: UserServiceConfig) {
         if (config) { this._userName = config.userName; }
@@ -26,6 +27,13 @@ export class UserService {
         // Demo: add a suffix if this service has been created more than once
         const suffix = this.id > 1 ? ` times ${this.id}` : '';
         return this._userName + suffix;
+    }
+    incOverview(): number {
+        this._ovCounter = this._ovCounter + 1; 
+        return this._ovCounter; 
+    }
+    get ovCounter() {
+        return this._ovCounter; 
     }
 }
 

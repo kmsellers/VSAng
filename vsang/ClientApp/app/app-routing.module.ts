@@ -2,7 +2,8 @@
 import { Routes, RouterModule } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'contacts', pathMatch: 'full'},
+    { path: '', redirectTo: "contacts", pathMatch: 'full' },
+    { path: 'contacts', loadChildren: './contacts/contacts.module#ContactsModule' },
 ];
 
 @NgModule({

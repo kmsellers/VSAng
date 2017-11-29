@@ -41,7 +41,8 @@ import { TabHostDirective } from './components/tabs/tab-host.directive';
         DynamicTabsDirective,
         TabHostDirective
     ],
-   
+    entryComponents: [Tab],
+
 
 })
 export class AppModuleShared {

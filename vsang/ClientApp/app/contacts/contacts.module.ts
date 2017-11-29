@@ -12,6 +12,7 @@ import { ContactOverviewComponent } from './components/contact-overview/contact-
 import { ContactHistoryComponent } from './components/contact-history/contact-history.component';
 
 import { ContactService } from "./services/contact.service";
+import { Tab } from "../components/tabs/tab.component";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,7 @@ import { ContactService } from "./services/contact.service";
         ContactsRoutingModule
     ],
     providers : [ ContactService ],
-    entryComponents: [ContactComponent, ContactOverviewComponent, ContactHistoryComponent],
+    entryComponents: [Tab, ContactComponent, ContactOverviewComponent, ContactHistoryComponent],
 
 })
 export class ContactsModule {

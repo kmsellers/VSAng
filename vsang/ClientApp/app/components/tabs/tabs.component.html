@@ -7,7 +7,7 @@
     </li>
     <!-- dynamic tabs -->
     <li *ngFor="let tab of dynamicTabs" (click)="selectTab(tab)" [class.active]="tab.active">
-       <a  ><span *ngIf="tab.iconName" class='glyphicon glyphicon-{{ tab.iconName }}'>&nbsp;</span>
+       <a ><span *ngIf="tab.iconName" class='glyphicon glyphicon-{{ tab.iconName }}'>&nbsp;</span>
         {{tab.title}} 
         <span class="tab-close" *ngIf="tab.isCloseable" (click)="closeTab(tab)">x</span>
        </a>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ITabComponent } from "../../../components/tabs/tab-component.interface";
+import { UserService } from "../../../core/user.service";
 
 @Component({
   selector: 'app-contact-overview',
@@ -9,6 +10,7 @@ import { ITabComponent } from "../../../components/tabs/tab-component.interface"
 })
 export class ContactOverviewComponent implements OnInit, ITabComponent {
     data: any;
+    ovCounter: number; 
    // @Input() id: string;  ??????
 
     //TODO:  need to understand how a tab component can also work with a route
@@ -22,9 +24,14 @@ export class ContactOverviewComponent implements OnInit, ITabComponent {
     //    });
     //}
 
+    constructor(private userService: UserService)
+    {
+
+    }
     ngOnInit() {
 
         //Load Overview information from data.id; 
+        this.ovCounter = this.userService.incOverview(); 
   }
 
 }

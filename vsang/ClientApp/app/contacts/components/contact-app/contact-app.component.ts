@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromPromise';
+import "rxjs/add/operator/filter";
+import "rxjs/add/operator/pairwise";
 import { Subscription } from "rxjs/Subscription";
 
 import { Contact } from '../../models/Contact';
@@ -33,7 +35,7 @@ export class ContactAppComponent implements OnInit {
     tabItems: TabItem[];
      @ViewChild(Tabs) contactTabs: Tabs;
 
-      constructor(private route: ActivatedRoute,
+      constructor(private router: Router, private route: ActivatedRoute,
           private contactService: ContactService, private contactAddinService: ContactAddinService) {
           this.route.params.subscribe(params => {
               console.log(params);
@@ -47,15 +49,28 @@ export class ContactAppComponent implements OnInit {
         //    console.log(error);
         //});
 
-      this.contactSub = this.getContact(this.contactId)
-          .subscribe(c => this.setContact(c), error => {
-              console.log(error);
+          this.contactSub = this.getContact(this.contactId)
+              .subscribe(c => this.setContact(c), error => {
+                  console.log(error);
 
-          });
+              });
 
+          this.router.events
+              .filter(event => event instanceof NavigationStart)
+              .pairwise()
+              .subscribe((value: [NavigationStart, NavigationStart]) => {
+
+                  let previousUrl = value[0].url;
+                  let nextUrl = value[1].url;
+              });
       }
+
       ngOnDestroy() {
           this.contactSub.unsubscribe();
+      }
+
+      ngOnNavigationStart() {
+
       }
 
       getContact(id: string): Observable<Contact> {

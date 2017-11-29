@@ -10,10 +10,11 @@ import { ContactHistoryComponent } from "./components/contact-history/contact-hi
 @NgModule({
 
     imports: [RouterModule.forChild([
-        { path: 'contacts', component: ContactsComponent} ,
-        { path: 'contacts/add', component: ContactFormComponent },
-        { path: 'contacts/:contactId', component: ContactAppComponent,
+        { path: '', component: ContactsComponent} ,
+        //{ path: 'add', component: ContactFormComponent },
+        { path: ':contactId', component: ContactAppComponent,
             children: [
+                { path: '', redirectTo: 'details', pathMatch: 'full' },
                 { path: 'details', component: ContactComponent },
                 { path: 'overview', component: ContactOverviewComponent },
                 { path: 'history', component: ContactHistoryComponent },
