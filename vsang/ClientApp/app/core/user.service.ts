@@ -17,7 +17,7 @@ export class UserServiceConfig {
 export class UserService {
     id = nextId++;
     private _userName = 'Sherlock Holmes';
-    private _ovCounter : number = 10; 
+    private _ovCounter : number = 0; 
 
     constructor( @Optional() config: UserServiceConfig) {
         if (config) { this._userName = config.userName; }

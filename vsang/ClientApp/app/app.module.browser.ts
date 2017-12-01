@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
     imports: [
         BrowserModule,
+        AppModuleShared,
         CoreModule.forRoot({userName: 'Module Browser'}),
         AppRoutingModule
     ],

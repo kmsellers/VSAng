@@ -66,6 +66,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
 
 
     ngOnDestroy(): void {
-        this.contactsSub.unsubscribe();
+        if (this.contactsSub)
+            this.contactsSub.unsubscribe();
     }
 }

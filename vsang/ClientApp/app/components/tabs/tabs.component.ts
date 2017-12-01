@@ -1,11 +1,7 @@
 import {
     Component, ContentChildren, QueryList, OnInit, AfterContentInit, ViewChild,
     ComponentFactoryResolver, ViewContainerRef, Input, ComponentFactory, ChangeDetectionStrategy} from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/fromPromise';
-import { Subscription } from "rxjs/Subscription";
+
 
 import { Tab } from './tab.component';
 import { DynamicTabsDirective } from './dynamic-tabs.directive';
@@ -19,7 +15,6 @@ import { ITabComponent } from "./tab-component.interface";
 })
 export class Tabs implements OnInit, AfterContentInit {
     @Input() tabItems: TabItem[];
-    tabItemsSub: Subscription; 
 
     dynamicTabs: Tab[] = [];
 
@@ -52,6 +47,8 @@ export class Tabs implements OnInit, AfterContentInit {
             for (var ti of tabItems) {
                 this.createTab(componentFactory, viewContainerRef, ti.title, ti.iconName, ti.ref, ti.component, ti.data, false);
             }
+
+            this.defaultTabCheck();
         }
     }
 
@@ -63,13 +60,36 @@ export class Tabs implements OnInit, AfterContentInit {
 
     // contentChildren are set
     ngAfterContentInit() {
-        // get all active tabs
-        let activeTabs = this.tabs.filter((tab) => tab.active);
+        this.defaultTabCheck();
+    }
 
-        // if there is no active tab set, activate the first
-        if (activeTabs.length === 0) {
-            this.selectTab(this.tabs.first);
+    defaultTabCheck()
+    {
+        if (this.tabs && this.tabs.length) {
+            // get all active tabs
+            let activeTabs = this.tabs.filter((tab) => tab.active);
+
+            // if there is no active tab set, activate the first
+            if (activeTabs.length === 0) {
+                this.selectTab(this.tabs.first);
+                
+            }
+            return;
         }
+
+        if (this.dynamicTabs && this.dynamicTabs.length)
+        {
+            let dynActiveTabs = this.dynamicTabs.filter((tab) => tab.active);
+
+            // if there is no active tab set, activate the first
+            if (dynActiveTabs.length === 0) {
+                this.selectTab(this.dynamicTabs[0]);
+
+            }
+            return;
+        }
+
+
     }
 
     openTab(title: string, iconName: string, ref: string, component : any, data : any, isCloseable = false) {
@@ -107,6 +127,19 @@ export class Tabs implements OnInit, AfterContentInit {
         // tab navigation headers
         this.dynamicTabs.push(componentRef.instance as Tab);
      
+    }
+
+    selectTabByRef(ref: string)
+    {
+        var refTab = this.tabs.find(t => t.ref === ref);
+        if (refTab !== undefined)
+        {
+            this.selectTab(refTab);
+        }
+        else 
+        {
+            throw "Error finding reference tab";
+        }
     }
 
     selectTab(tab: Tab) {

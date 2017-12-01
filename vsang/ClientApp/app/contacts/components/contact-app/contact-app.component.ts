@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -31,52 +31,46 @@ export class ContactAppComponent implements OnInit {
     //TODO:  Navbar - need to get navbar items from metadata and/or state. 
     //navbarItems: NavBarItem[]; 
     contact: Contact;
-    contactSub: Subscription;     contactId: string; 
+    contactSub: Subscription;
+    contactId: string; 
     tabItems: TabItem[];
      @ViewChild(Tabs) contactTabs: Tabs;
 
-      constructor(private router: Router, private route: ActivatedRoute,
-          private contactService: ContactService, private contactAddinService: ContactAddinService) {
-          this.route.params.subscribe(params => {
-              console.log(params);
-              this.contactId = params.contactId;
-              console.log("this contactId = " + this.contactId);
-          });
-}
+    constructor(private route: ActivatedRoute,
+        private contactService: ContactService, private contactAddinService: ContactAddinService) {
+        this.route.params.subscribe(params => {
+            console.log(params);
+            this.contactId = params.contactId;
+            console.log("this contactId = " + this.contactId);
+        });
 
-      ngOnInit() {
-           //this.getNavBarItems().subscribe(nbi => this.navbarItems = nbi, error => {
-        //    console.log(error);
-        //});
 
-          this.contactSub = this.getContact(this.contactId)
-              .subscribe(c => this.setContact(c), error => {
-                  console.log(error);
+    }
 
-              });
+    ngOnInit() {
+    //this.getNavBarItems().subscribe(nbi => this.navbarItems = nbi, error => {
+    //    console.log(error);
+    //});
 
-          this.router.events
-              .filter(event => event instanceof NavigationStart)
-              .pairwise()
-              .subscribe((value: [NavigationStart, NavigationStart]) => {
+        this.contactSub = this.getContact(this.contactId)
+            .subscribe(c => this.setContact(c), error => {
 
-                  let previousUrl = value[0].url;
-                  let nextUrl = value[1].url;
-              });
-      }
+                console.log(error);
 
-      ngOnDestroy() {
-          this.contactSub.unsubscribe();
-      }
+            });
+    }
 
-      ngOnNavigationStart() {
+    ngOnDestroy() {
+        this.contactSub.unsubscribe();
+    }
 
-      }
+ 
 
-      getContact(id: string): Observable<Contact> {
 
-          return this.contactService.getContact(id);
-      }
+    getContact(id: string): Observable<Contact> {
+
+        return this.contactService.getContact(id);
+    }
     //getNavBarItems(): Observable<NavBarItem[]> {
     //    return Observable.of([
     //        { title: 'Overview', iconName: 'user', uiSref: './overview' },

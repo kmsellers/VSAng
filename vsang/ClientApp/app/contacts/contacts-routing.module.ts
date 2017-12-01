@@ -13,12 +13,11 @@ import { ContactHistoryComponent } from "./components/contact-history/contact-hi
         { path: '', component: ContactsComponent} ,
         //{ path: 'add', component: ContactFormComponent },
         { path: ':contactId', component: ContactAppComponent,
-            children: [
-                { path: '', redirectTo: 'details', pathMatch: 'full' },
-                { path: 'details', component: ContactComponent },
-                { path: 'overview', component: ContactOverviewComponent },
-                { path: 'history', component: ContactHistoryComponent },
-         ]
+            //children: [
+            //    { path: 'details', component: ContactComponent },
+            //    { path: 'overview', component: ContactOverviewComponent },
+            //    { path: 'history', component: ContactHistoryComponent },
+            //]
         },
     ])],
 

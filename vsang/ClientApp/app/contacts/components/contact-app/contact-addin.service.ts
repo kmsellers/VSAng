@@ -11,8 +11,9 @@ export class ContactAddinService {
     getContactTabItems(contact : Contact) {
         return [
             new TabItem('Details', 'user', './details', ContactComponent, { contact: contact }),
-            new TabItem('Overview', 'user', './overview', ContactOverviewComponent, { id : contact.id }),
-            new TabItem('History', 'th-list', './history', ContactHistoryComponent, { id : contact.id }),
+            new TabItem('Overview1', 'user', './overview', ContactOverviewComponent, { id : contact.id }),
+            new TabItem('Overview2', 'user', './overview', ContactOverviewComponent, { id: contact.id }),
+       new TabItem('History', 'th-list', './history', ContactHistoryComponent, { id : contact.id }),
 
         ];
     }

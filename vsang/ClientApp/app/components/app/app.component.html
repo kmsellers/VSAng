@@ -2,6 +2,7 @@
     <div class='row'>
         <div class='col-sm-9 body-content'>
             <app-title [subtitle]="subtitle"></app-title>
+            <span *ngIf="loading">loading...</span>
             <router-outlet></router-outlet>
         </div>
     </div>

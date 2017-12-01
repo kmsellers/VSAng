@@ -10,6 +10,8 @@ import { Contact } from '../models/contact';
 @Injectable()
 export class ContactService
 {
+    private contact$: Observable<Contact>; 
+    private id: string; 
 
       private headers = new Headers({ 'Content-Type': 'application/json'});
       private contactsUrl = this.baseUrl + 'api/Contacts';  // URL to web api
@@ -40,13 +42,18 @@ export class ContactService
       //        .catch(this.handleError);
       //}
 
-      getContact(id: string): Observable<Contact> {
+       getContact(id: string): Observable<Contact> {
+           if (this.id === id)
+                return this.contact$; 
+           this.id = id; 
           const url = `${this.contactsUrl}/${id}`;
 
-          return this.http.get(url).map(data => data.json() as Contact)
-             .catch(this.handleError);
+          this.contact$ = this.http.get(url).map(data => data.json() as Contact)
+              .catch(this.handleError);
+          return this.contact$; 
       }
 
+      
       delete(id: string): Promise<void> {
         const url = `${this.contactsUrl}/${id}`;
         return this.http.delete(url, {headers: this.headers})
