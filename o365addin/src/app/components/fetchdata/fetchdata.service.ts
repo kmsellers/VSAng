@@ -17,7 +17,8 @@ export class FetchDataService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
     private forecastUrl = this.baseUrl + 'api/SampleData/WeatherForecasts';  // URL to web api
 
-    constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+    constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string,
+    @Inject('API_URL') private api_url: string) { }
 
 
     getWeatherForecast(): Observable<WeatherForecast[]> {

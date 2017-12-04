@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { AppModuleShared } from '../../app/app.module.shared';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+
 //TODO:  This should probably be in an environment specfic module.  In production, we do not use in mem services. 
 //       Look at how sic handled the inmem for testing.
 

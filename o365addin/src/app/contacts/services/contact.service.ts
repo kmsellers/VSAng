@@ -16,7 +16,7 @@ export class ContactService
       private headers = new HttpHeaders({ 'Content-Type': 'application/json'});
       private contactsUrl = this.baseUrl + 'api/contacts';  // URL to web api
 
-      constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl : string) { }
+      constructor(private http: HttpClient, @Inject('BASE_API_URL') private baseUrl : string) { }
 
        getContacts(): Observable<Contact[]> {
           
