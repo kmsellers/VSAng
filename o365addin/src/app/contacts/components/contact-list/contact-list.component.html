@@ -1,0 +1,62 @@
+<h2>My Contacts</h2>
+<div>
+    <a routerLink="/contacts/add">
+        New Contact
+    </a>
+</div>
+<div style="margin-bottom: 1em">
+    <button (click)="newContact()">
+        New
+    </button> 
+
+</div>
+<section>
+    <app-contact-card [ngClass]="contact"
+                      *ngFor="let contact of contacts"
+                      [contact]="contact"
+                      (delete)="onContactDelete($event)"
+                      (view)="onViewDetails($event)">
+
+    </app-contact-card>
+</section>
+<table class='table' *ngIf="contacts" >
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Postal Code</th>
+            <th>Country</th>
+            <th>Delete</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let contact of contacts" (click)="onSelect(contact)"
+        [class.selected]="contact === selectedContact">
+            <td>{{ contact.first_name }}</td>
+            <td>{{ contact.last_name }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.address_line_1 }}</td>
+            <td>{{ contact.city }}</td>
+            <td>{{ contact.state }}</td>
+            <td>{{ contact.postal_code }}</td>
+            <td>{{ contact.country }}</td>
+            <td><button class="delete"
+                       (click)="delete(contact); $event.stopPropagation()">
+                    x
+                </button></td>
+            <td>
+                <button 
+                        (click)="onViewDetails(contact); $event.stopPropagation()">
+                    view
+                </button>
+            </td>
+      </tr>
+    </tbody>
+</table>
+<p>contacts json: {{ contacts | json}}</p>
+
+

@@ -1,0 +1,78 @@
+<header>
+    <h2>Create Contact</h2>
+</header>
+<form [formGroup]="contactForm"
+      (ngSubmit)="onSubmit()" >
+    <div style="margin-bottom: 1em">
+        <button type="submit"
+                [disabled]="contactForm.pristine" class="btn btn-success">
+            Save
+        </button> &nbsp;
+        <button type="reset" (click)="revert()"
+                [disabled]="contactForm.pristine" class="btn btn-danger">
+            Revert
+        </button>
+    </div>
+
+    <div style="margin-left: 1em;">    
+        <div class="form-group">
+            <label class="center-block">
+                First Name:
+                <input class="form-control" formControlName="first_name">
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                Last Name:
+                <input class="form-control" formControlName="last_name">
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                Email:
+                <input class="form-control" formControlName="email" email="true">
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                Work Phone:
+                <input class="form-control" formControlName="work_phone" email="true">
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                Mobile Phone:
+                <input class="form-control" formControlName="mobile_phone" email="true">
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                Street:
+                <input class="form-control" formControlName="address_line_1">
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                City:
+                <input class="form-control" formControlName="city">
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                State:
+                <select class="form-control" formControlName="state">
+                    <option *ngFor="let state of states" [value]="state">{{state}}</option>
+                </select>
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="center-block">
+                Postal Code:
+                <input class="form-control" formControlName="postal_code">
+            </label>
+        </div>
+
+    </div>
+
+</form>
+<p>contactForm value: {{ contactForm.value | json}}</p>
