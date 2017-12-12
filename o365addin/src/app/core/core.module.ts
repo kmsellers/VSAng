@@ -6,13 +6,22 @@ import {
 
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from './title.component';
-import { UserServiceConfig, UserService } from "./user.service";
+//import { NavBarComponent } from './components/navbar/navbar.component';
+import { HeaderComponent } from '../components/header/header.component';
+import { FooterComponent } from '../components/footer/footer.component';
 
+import { UserServiceConfig, UserService } from "./user.service";
 
 @NgModule({
     imports: [ CommonModule ],
-    declarations: [ TitleComponent ],
-    exports: [ TitleComponent ],
+    declarations: [ TitleComponent,
+        //NavBarComponent,
+        HeaderComponent,
+        FooterComponent, ],
+    exports: [ TitleComponent,
+        //NavBarComponent,
+        HeaderComponent,
+        FooterComponent, ],
     providers: [ UserService ]
 
 })

@@ -10,10 +10,10 @@ import { Contact } from "../../models/contact";
 export class ContactAddinService {
     getContactTabItems(contact : Contact) {
         return [
-            new TabItem('Details', 'user', './details', ContactComponent, { contact: contact }),
-            new TabItem('Overview1', 'user', './overview', ContactOverviewComponent, { id : contact.id }),
-            new TabItem('Overview2', 'user', './overview', ContactOverviewComponent, { id: contact.id }),
-       new TabItem('History', 'th-list', './history', ContactHistoryComponent, { id : contact.id }),
+            new TabItem('Details', 'user', 'details', ContactComponent, { contact: contact }),
+            new TabItem('Overview1', 'user', 'overview/1', ContactOverviewComponent, { id : contact.id }),
+            new TabItem('Overview2', 'user', 'overview/2', ContactOverviewComponent, { id: contact.id }),
+       new TabItem('History', 'th-list', 'history', ContactHistoryComponent, { id : contact.id }),
 
         ];
     }

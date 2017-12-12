@@ -1,0 +1,78 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "first_name": "Karen",
+      "last_name": "Sellers",
+      "email": "karen.sellers@sage.com",
+      "mobile_phone": "9495552001",
+      "work_phone": "9497902001",
+      "address_line_1": "7595 Irvine Center Dr.",
+      "city": "Irvine",
+      "state": "CA",
+      "postal_code": "92618",
+      "country": "USA"
+  
+    },
+    {
+      "id": "2",
+      "first_name": "Mark",
+      "last_name": "Smith",
+      "email": "mark.smith@someco.com",
+      "mobile_phone": "9495552002",
+      "work_phone": "9497902002",
+      "address_line_1": "2002 Irvine Center Dr.",
+      "city": "Irvine",
+      "state": "CA",
+      "postal_code": "92612",
+      "country": "USA"
+    },
+    {
+      "first_name": "Steve",
+      "last_name": "Malmgren",
+      "email": "steve.malmgren@sage.com",
+      "mobile_phone": "9495551313",
+      "work_phone": "9495551212",
+      "address_line_1": "7595 Irvine Center Dr.",
+      "city": "Irvine",
+      "state": "CA",
+      "postal_code": "92618",
+      "country": "USA",
+      "id": "6cOFUaN"
+    }
+  ],
+  "sales-history": [
+    {
+       "id" : "10",
+       "contactId" : 2,
+       "description": "2 Holiday decorations", 
+       "sale_date": "2017-12-06", 
+       "total_amount": 36.0 
+   
+   },
+   {
+     "id" : "20",
+     "contactId" : 1,
+     "description": "Serving Dishes", 
+     "sale_date": "2017-12-05", 
+     "total_amount": 15.0 
+ 
+  },
+  {
+    "id" : "30",
+    "contactId" : 1,
+    "description": "Holiday decorations", 
+    "sale_date": "2017-12-06", 
+    "total_amount": 36.0 
+
+},
+{
+  "id" : "40",
+  "contactId" : 2,
+  "description": "2 Serving Dishes", 
+  "sale_date": "2017-12-05", 
+  "total_amount": 15.0 
+
+}]
+
+}

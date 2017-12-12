@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppModuleShared } from './app.module.shared';
 import { AppComponent } from './components/app/app.component';
-import { CoreModule } from './core/core.module';
+
 
 /* Routing Module */
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
+import { CoreModule } from './core/core.module';
+
 
 @NgModule({
     imports: [
@@ -21,7 +23,8 @@ import { environment } from '../environments/environment';
     bootstrap: [AppComponent],
     providers: [
         { provide: 'BASE_URL', useFactory: getBaseUrl },
-        { provide: 'BASE_API_URL', useFactory: getApiUrl }
+        { provide: 'BASE_API_URL', useFactory: getApiUrl },
+       
     ]
 })
 export class AppModule {

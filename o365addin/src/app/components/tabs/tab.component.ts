@@ -1,4 +1,5 @@
 import { Component, OnInit, Input,  ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 import { ITabComponent } from "./tab-component.interface";
 import { TabHostDirective } from "./tab-host.directive";
 
@@ -19,7 +20,7 @@ export class Tab implements OnInit {
 
     @ViewChild(TabHostDirective) tabHost: TabHostDirective;
 
-    constructor(private _componentFactoryResolver: ComponentFactoryResolver) { }
+    constructor(private router: Router, private _componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
 
@@ -29,6 +30,8 @@ export class Tab implements OnInit {
 
   activate()
   {
+
+      /*
       let viewContainerRef = this.tabHost.viewContainer;
         //   viewContainerRef.clear();
       if (this.component !== undefined && this.template === undefined) {
@@ -39,6 +42,7 @@ export class Tab implements OnInit {
           this.template = componentRef;
           (<ITabComponent>componentRef.instance).data = this.dataContext;
       }
+      */
       this.active = true; 
 
   }

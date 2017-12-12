@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs">
+<div><ul class="nav nav-tabs">
     <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
         <a>
             <span *ngIf="tab.iconName" class='glyphicon glyphicon-{{ tab.iconName }}' >&nbsp;</span>
@@ -6,8 +6,8 @@
         </a>
     </li>
     <!-- dynamic tabs -->
-    <li *ngFor="let tab of dynamicTabs" (click)="selectTab(tab)" [class.active]="tab.active">
-       <a><span *ngIf="tab.iconName" class='glyphicon glyphicon-{{ tab.iconName }}'>&nbsp;</span>
+    <li *ngFor="let tab of dynamicTabs"  [routerLinkActive]="['active']" (click)="selectTab(tab)" >
+       <a routerLink ="{{ tab.ref }}"><span *ngIf="tab.iconName" class='glyphicon glyphicon-{{ tab.iconName }}'>&nbsp;</span>
         {{tab.title}} 
         <span class="tab-close" *ngIf="tab.isCloseable" (click)="closeTab(tab)">x</span>
        </a>
@@ -15,3 +15,5 @@
 </ul>
 <ng-content></ng-content>
 <ng-template dynamic-tabs #container></ng-template>
+<router-outlet></router-outlet>
+</div>

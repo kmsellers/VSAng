@@ -1,7 +1,7 @@
 import {
     Component, ContentChildren, QueryList, OnInit, AfterContentInit, ViewChild,
     ComponentFactoryResolver, ViewContainerRef, Input, ComponentFactory, ChangeDetectionStrategy} from '@angular/core';
-
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { Tab } from './tab.component';
 import { DynamicTabsDirective } from './dynamic-tabs.directive';

@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { ITabComponent } from "../../../components/tabs/tab-component.interface";
 import { UserService } from "../../../core/user.service";
 
@@ -9,7 +9,9 @@ import { UserService } from "../../../core/user.service";
   styleUrls: ['./contact-overview.component.css']
 })
 export class ContactOverviewComponent implements OnInit, ITabComponent {
-    data: any;
+  contactId: any;
+  id: any;
+  data: any;
     ovCounter: number; 
    // @Input() id: string;  ??????
 
@@ -24,11 +26,14 @@ export class ContactOverviewComponent implements OnInit, ITabComponent {
     //    });
     //}
 
-    constructor(private userService: UserService)
+    constructor(private route: ActivatedRoute, private userService: UserService)
     {
 
     }
     ngOnInit() {
+      this.contactId = this.route.parent.snapshot.params.contactId; 
+      this.route.params.subscribe(params => this.id = params.id); 
+      console.log("overview child id: " + this.id);
 
         //Load Overview information from data.id; 
         this.ovCounter = this.userService.incOverview(); 

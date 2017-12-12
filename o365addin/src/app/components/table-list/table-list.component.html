@@ -1,0 +1,22 @@
+<ul>
+
+</ul>
+<table class='table' *ngIf="salesHistory" >
+  <thead>
+      <template ngFor [ngForOf]="headers" [ngForTemplate]="template" >
+    </template>
+      <tr>
+
+          <th>Description</th>
+          <th>Sale Date</th>
+          <th>Total Amount</th>
+     </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let salesHistoryRow of salesHistory">
+          <td>{{ salesHistoryRow.description }}</td>
+          <td>{{ salesHistoryRow.sale_date }}</td>
+          <td>{{ salesHistoryRow.total_amount }}</td>
+    </tr>
+  </tbody>
+</table>
