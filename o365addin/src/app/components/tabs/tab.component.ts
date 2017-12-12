@@ -44,6 +44,7 @@ export class Tab implements OnInit {
       }
       */
       this.active = true; 
+      //this.router.navigate(this.ref);
 
   }
   deactivate() {
